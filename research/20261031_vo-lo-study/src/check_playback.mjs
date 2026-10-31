@@ -1,0 +1,34 @@
+import {createRequire} from 'node:module';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+const require=createRequire('/tmp/kitti-report-pdf/package.json');
+const {chromium}=require('playwright');
+const root=path.resolve('research/20261031_vo-lo-study');
+const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
+try{
+ const page=await browser.newPage({viewport:{width:1440,height:1100}});const errors=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(pathToFileURL(path.join(root,'artifacts/playback/index.html')).href);
+ await page.waitForFunction(()=>document.querySelector('#info').textContent.includes('FRAME 0'));
+ await page.click('#play');await page.waitForFunction(()=>Number(document.querySelector('#seek').value)>3);await page.click('#play');
+ await page.locator('#seek').fill('120');await page.locator('#seek').dispatchEvent('input');
+ await page.waitForFunction(()=>document.querySelector('#info').textContent.includes('FRAME 120'));
+ await page.check('#orb');await page.selectOption('#mode','metric');
+ await page.waitForTimeout(100);
+ const pixels=await page.evaluate(()=>['camera','bev','path'].map(id=>{let c=document.getElementById(id),d=c.getContext('2d').getImageData(0,0,c.width,c.height).data,n=0;for(let j=0;j<d.length;j+=4)if(d[j]||d[j+1]||d[j+2])n++;return {id,n};}));
+ if(pixels.some(p=>p.n<100))throw Error('Blank canvas');
+ await page.screenshot({path:path.join(root,'figures/playback_desktop.png'),fullPage:true});
+ await page.setViewportSize({width:390,height:844});await page.screenshot({path:path.join(root,'figures/playback_mobile.png'),fullPage:true});
+ if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('Overflow');
+ await page.getByRole('link',{name:'전체 시퀀스 재방문 후보'}).click();
+ await page.selectOption('#pair','2');
+ await page.waitForFunction(()=>document.querySelector('#firstTitle').textContent.includes('61')&&['path','first','second'].every(id=>{const i=document.getElementById(id);return i.complete&&i.naturalWidth>0;}));
+ if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('Loop viewer overflow');
+ await page.screenshot({path:path.join(root,'../20261031_loop-readiness/figures/viewer_mobile.png'),fullPage:true});
+ await page.setViewportSize({width:1440,height:1100});
+ await page.screenshot({path:path.join(root,'../20261031_loop-readiness/figures/viewer_desktop.png'),fullPage:true});
+ await page.getByRole('link',{name:'VO / LO 비교 재생'}).click();
+ await page.waitForFunction(()=>document.querySelector('#info').textContent.includes('FRAME 0'));
+ if(errors.length)throw Error(errors.join('\n'));
+ console.log(JSON.stringify({play:true,seek:true,mode:true,pixels,errors}));
+}finally{await browser.close();}
