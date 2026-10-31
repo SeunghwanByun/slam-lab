@@ -20,6 +20,32 @@ The generated HTML embeds image data and grows with the requested frame count.
 
 Monocular visual odometry, visual SLAM, and LiDAR SLAM study repo.
 
+## VO / LO Comparison
+
+The research branch includes ORB monocular VO, KISS-ICP LiDAR odometry,
+synchronized playback and a GT-based revisit-candidate viewer. Loop detection
+and pose-graph optimization are **not** implemented.
+
+```bash
+uv venv --python 3.11 research/20261031_vo-lo-study/.venv
+uv pip install --python research/20261031_vo-lo-study/.venv/bin/python -r research/20261031_vo-lo-study/configs/requirements-lock.txt
+research/20261031_vo-lo-study/.venv/bin/python research/20261031_vo-lo-study/src/run.py
+```
+
+Open `research/20261031_vo-lo-study/artifacts/playback/index.html` directly in
+a browser. It contains camera images, projected LiDAR, scan BEV and GT/VO/LO
+trajectories. Its revisit link opens whole-sequence GT candidates; the VO/LO
+estimates cover only the configured first 200 frames.
+
+To rebuild only the viewers from existing estimates, pass `--stage playback`.
+VSCode configurations `KITTI: VO + LO research and playback` and
+`KITTI: Refresh VO + LO playback` use the research virtual environment.
+
+Reports: [VO/LO study PDF](research/20261031_vo-lo-study/report.pdf),
+[revisit readiness PDF](research/20261031_loop-readiness/report.pdf).
+Generated artifacts and datasets stay local; sources, figures and reports are
+versioned. The research and production VO pipelines remain separate.
+
 The first milestone is a small KITTI odometry pipeline:
 
 1. Load calibrated image sequences.
