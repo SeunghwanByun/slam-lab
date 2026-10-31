@@ -1,0 +1,9 @@
+{
+  "playback": "outputs/playback.html",
+  "sequence": "00",
+  "expected_frames": 200,
+  "raw_drive": "2011_10_03_drive_0027_extract",
+  "feature_commit": "365baf354987a3187067bc57fc922eeb1860af9c",
+  "grid_columns": 8,
+  "grid_rows": 4
+}

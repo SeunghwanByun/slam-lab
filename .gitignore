@@ -5,3 +5,5 @@ __pycache__/
 data/
 outputs/
 .cache/
+research/**/artifacts/
+research/**/report.print.html
