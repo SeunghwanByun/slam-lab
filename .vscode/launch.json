@@ -2,6 +2,26 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "KITTI: VO + LO research and playback",
+      "type": "debugpy",
+      "request": "launch",
+      "python": "${workspaceFolder}/research/20261031_vo-lo-study/.venv/bin/python",
+      "program": "${workspaceFolder}/research/20261031_vo-lo-study/src/run.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "args": ["--stage", "all"]
+    },
+    {
+      "name": "KITTI: Refresh VO + LO playback",
+      "type": "debugpy",
+      "request": "launch",
+      "python": "${workspaceFolder}/research/20261031_vo-lo-study/.venv/bin/python",
+      "program": "${workspaceFolder}/research/20261031_vo-lo-study/src/run.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "args": ["--stage", "playback"]
+    },
+    {
       "name": "KITTI: Build playback (200 frames)",
       "type": "debugpy",
       "request": "launch",
