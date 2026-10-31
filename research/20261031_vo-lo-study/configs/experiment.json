@@ -1,0 +1,10 @@
+{
+  "sequence": "00", "frames": 200, "seed": 7,
+  "orb_features": 2500, "match_limit": 1000,
+  "ransac_probability": 0.999, "ransac_threshold_px": 1.0,
+  "diagnostic_frames": [1, 120, 136, 199],
+  "vo_variants": ["baseline", "ratio"], "ratio_threshold": 0.75,
+  "lo_voxel_size_m": 1.0, "lo_min_range_m": 5.0, "lo_max_range_m": 100.0,
+  "lo_max_threads": 4, "lo_deskew": false,
+  "synthetic_rotation_deg": 30, "geometry_tolerance_px": 3.0
+}
