@@ -1,6 +1,15 @@
 # visual-slam-lab
 
-## Offline Debug Playback
+## Unified Stereo / VO / LO Playback
+
+Open `research/20261031_vo-lo-study/artifacts/playback/index.html` for the
+integrated viewer: synchronized left/right raw cameras, left-camera ORB temporal
+matches, LiDAR projection/scan, and GT/VO/LO trajectories. The right camera is
+display-only; the estimator remains monocular. Metric GT/LO is the default;
+VO comparison uses explicitly labeled GT-fitted Sim(3), not recovered metric scale.
+Regenerate with the research runner documented below.
+
+## Legacy VO-only Playback
 
 ```bash
 .venv/bin/python -m src.viz.export_playback --sequence 00 --max-frames 200
