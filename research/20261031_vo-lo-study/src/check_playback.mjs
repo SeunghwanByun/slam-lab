@@ -13,9 +13,10 @@ try{
  await page.click('#play');await page.waitForFunction(()=>Number(document.querySelector('#seek').value)>3);await page.click('#play');
  await page.locator('#seek').fill('120');await page.locator('#seek').dispatchEvent('input');
  await page.waitForFunction(()=>document.querySelector('#info').textContent.includes('FRAME 120'));
- await page.check('#orb');await page.selectOption('#mode','metric');
+ await page.check('#orb');await page.check('#matches');await page.check('#rejected');await page.selectOption('#mode','shape');await page.selectOption('#mode','metric');
  await page.waitForTimeout(100);
- const pixels=await page.evaluate(()=>['camera','bev','path'].map(id=>{let c=document.getElementById(id),d=c.getContext('2d').getImageData(0,0,c.width,c.height).data,n=0;for(let j=0;j<d.length;j+=4)if(d[j]||d[j+1]||d[j+2])n++;return {id,n};}));
+ const pixels=await page.evaluate(()=>['leftRaw','rightRaw','camera','bev','path'].map(id=>{let c=document.getElementById(id),d=c.getContext('2d').getImageData(0,0,c.width,c.height).data,n=0;for(let j=0;j<d.length;j+=4)if(d[j]||d[j+1]||d[j+2])n++;return {id,n};}));
+ if(!await page.evaluate(()=>{const a=$('leftRaw').getContext('2d').getImageData(0,0,data.width,data.height).data,b=$('rightRaw').getContext('2d').getImageData(0,0,data.width,data.height).data;return a.some((v,i)=>v!==b[i]);}))throw Error('Stereo images are identical');
  if(pixels.some(p=>p.n<100))throw Error('Blank canvas');
  await page.screenshot({path:path.join(root,'figures/playback_desktop.png'),fullPage:true});
  await page.setViewportSize({width:390,height:844});await page.screenshot({path:path.join(root,'figures/playback_mobile.png'),fullPage:true});
