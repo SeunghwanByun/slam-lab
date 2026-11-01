@@ -1,5 +1,13 @@
 # visual-slam-lab
 
+## ORB Study Guide
+
+See `research/20261101_orb-explained/report.pdf` for the step-by-step Korean
+guide to FAST, NMS, Harris, orientation, BRIEF and matching, with measured pixel
+examples and corrected scale-pyramid comparisons. The old four-level illustration
+auto-fitted every image to its panel; the new guide shows all eight levels on
+common pixel axes and distinguishes educational arrays from actual ORB outputs.
+
 ## Unified Stereo / VO / LO Playback
 
 Open `research/20261031_vo-lo-study/artifacts/playback/index.html` for the
