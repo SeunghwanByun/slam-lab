@@ -1,5 +1,13 @@
 # Session Summary
 
+## Current Entry Point
+
+Repository renamed to `SeunghwanByun/slam-lab` on 2026-11-02.
+The current, versioned study document is `docs/report.md` / `docs/report.pdf`.
+The local folder remains `/Users/youth/Project/visual-slam-lab` to preserve the
+active VSCode workspace and virtual environments. Sections below are historical
+snapshots, not the current implementation or dataset inventory.
+
 ## Progress Through 2026-10-25
 
 This section supersedes the initial setup goals below. Explain in Korean and

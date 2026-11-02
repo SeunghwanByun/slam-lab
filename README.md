@@ -1,4 +1,14 @@
-# visual-slam-lab
+# slam-lab
+
+A top-down study and experiment lab for SLAM: mathematical foundations,
+visual and LiDAR odometry, mapping, optimization, loop closure and multi-sensor
+fusion. Current implementations are odometry baselines, not a complete SLAM
+or sensor-fusion system. Repository: https://github.com/SeunghwanByun/slam-lab
+
+The GitHub repository and `origin` use `slam-lab`. The existing local folder
+may still be named `visual-slam-lab`; it was not moved, preserving the active
+VSCode workspace and virtual-environment paths. Historical reports keep their
+original names and provenance.
 
 ## Study Report
 
@@ -42,7 +52,7 @@ translation while GT is metric; no ground-truth scale is injected. Failed pose
 estimates hold the last position and are marked in the status display.
 The generated HTML embeds image data and grows with the requested frame count.
 
-Monocular visual odometry, visual SLAM, and LiDAR SLAM study repo.
+The current first step is monocular visual odometry and LiDAR odometry.
 
 ## VO / LO Comparison
 
@@ -87,9 +97,10 @@ This repo is intentionally top-down:
 ```text
 SLAM system goal
 -> dataset and debugging loop
--> visual odometry front-end
+-> odometry and coordinate-transform foundations
+-> geometry, probability, least squares and state estimation
 -> mapping and optimization
--> LiDAR odometry / SLAM
+-> loop closure and multi-sensor SLAM
 ```
 
 The current implementation is a first visual odometry baseline, not full SLAM yet.
