@@ -5,10 +5,10 @@ visual and LiDAR odometry, mapping, optimization, loop closure and multi-sensor
 fusion. Current implementations are odometry baselines, not a complete SLAM
 or sensor-fusion system. Repository: https://github.com/SeunghwanByun/slam-lab
 
-The GitHub repository and `origin` use `slam-lab`. The existing local folder
-may still be named `visual-slam-lab`; it was not moved, preserving the active
-VSCode workspace and virtual-environment paths. Historical reports keep their
-original names and provenance.
+The GitHub repository, `origin` and local folder now use `slam-lab`.
+The local workspace is `/Users/youth/Project/slam-lab`; reopen that folder in
+VSCode after the rename. Virtual-environment launchers were updated for the new
+path. Historical reports keep their original names and provenance.
 
 ## Study Report
 

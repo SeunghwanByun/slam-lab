@@ -4,9 +4,10 @@
 
 Repository renamed to `SeunghwanByun/slam-lab` on 2026-11-02.
 The current, versioned study document is `docs/report.md` / `docs/report.pdf`.
-The local folder remains `/Users/youth/Project/visual-slam-lab` to preserve the
-active VSCode workspace and virtual environments. Sections below are historical
-snapshots, not the current implementation or dataset inventory.
+The local folder was renamed to `/Users/youth/Project/slam-lab` on 2026-11-03.
+Virtual-environment launchers were updated; VSCode uses workspace-relative paths.
+Sections below are historical snapshots, not the current implementation or
+dataset inventory. Their old paths are retained as historical provenance.
 
 ## Progress Through 2026-10-25
 
