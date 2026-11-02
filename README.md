@@ -1,12 +1,19 @@
 # visual-slam-lab
 
-## ORB Study Guide
+## Study Report
 
-See `research/20261101_orb-explained/report.pdf` for the step-by-step Korean
-guide to FAST, NMS, Harris, orientation, BRIEF and matching, with measured pixel
-examples and corrected scale-pyramid comparisons. The old four-level illustration
-auto-fitted every image to its panel; the new guide shows all eight levels on
-common pixel axes and distinguishes educational arrays from actual ORB outputs.
+**[Current Study Report (PDF)](docs/report.pdf)** · [Editable source](docs/report.md)
+
+One versioned Korean document covers ORB/FAST/Harris/BRIEF, corrected scale
+pyramids, VO geometry, KISS-ICP LO, evaluation, loop candidates, integrated
+playback and sensor audits. Update the same source, its version and changelog;
+do not create new dated reports. Historical research reports remain archives.
+
+Build the current PDF with `node tools/render_report.mjs`. The renderer checks
+figure paths, image decoding, Mermaid diagrams and table-of-contents anchors.
+It uses Chrome and marked/playwright/mermaid from `REPORT_PDF_DEPS` (default:
+`/tmp/kitti-report-pdf/node_modules`). Set `REPORT_CHROME` for a different Chrome
+executable. See the report's reproduction section for environment requirements.
 
 ## Unified Stereo / VO / LO Playback
 
@@ -58,8 +65,7 @@ To rebuild only the viewers from existing estimates, pass `--stage playback`.
 VSCode configurations `KITTI: VO + LO research and playback` and
 `KITTI: Refresh VO + LO playback` use the research virtual environment.
 
-Reports: [VO/LO study PDF](research/20261031_vo-lo-study/report.pdf),
-[revisit readiness PDF](research/20261031_loop-readiness/report.pdf).
+The [current report](docs/report.pdf) includes VO/LO and revisit analysis.
 Generated artifacts and datasets stay local; sources, figures and reports are
 versioned. The research and production VO pipelines remain separate.
 
