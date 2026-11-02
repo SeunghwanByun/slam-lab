@@ -19,7 +19,7 @@ for(const href of localImages)await fs.access(path.resolve(directory,href));
 if(!expectedDiagrams || !localImages.length)throw Error('Expected study diagrams and figures');
 let content=marked.parser(tokens);
 content=content.replace(/<pre><code class="language-mermaid">([\s\S]*?)<\/code><\/pre>/g,'<pre class="mermaid">$1</pre>');
-const html=`<!doctype html><html lang="ko"><meta charset="utf-8"><title>Visual SLAM Lab 통합 보고서</title>
+const html=`<!doctype html><html lang="ko"><meta charset="utf-8"><title>SLAM Lab 통합 보고서</title>
 <style>@page{size:A4;margin:18mm 15mm}body{font-family:'Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif;font-size:10pt;line-height:1.65;color:#18242b}h1{font-size:23pt}h2{font-size:17pt;border-bottom:1px solid #a9b8bf;padding-bottom:5px;break-before:page}h3{font-size:14pt;margin-top:24px}h4{font-size:12pt}h1,h2,h3,h4{break-after:avoid}p,li{orphans:3;widows:3}table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:8pt;margin:12px 0}th,td{border:1px solid #c9d3d8;padding:5px;vertical-align:top;overflow-wrap:anywhere}th{background:#eef3f5}thead{display:table-header-group}tr{break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4f5;padding:10px;font-size:8pt}code{font-family:Menlo,monospace;font-size:.88em;overflow-wrap:anywhere}img{max-width:100%;max-height:210mm;object-fit:contain}a{color:#08677b;text-decoration:none}svg{max-width:100%;height:auto}pre.mermaid{background:white;break-inside:avoid}</style><body>${content}</body></html>`;
 const htmlPath=path.join(directory,'report.print.html');
 await fs.writeFile(htmlPath,html);
@@ -33,6 +33,6 @@ try{
  if(diagrams!==expectedDiagrams)throw Error(`Diagrams: ${diagrams}/${expectedDiagrams}`);
  const invalidAnchors=await page.evaluate(()=>[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(decodeURIComponent(a.hash.slice(1)))).map(a=>a.hash));
  if(invalidAnchors.length||errors.length)throw Error(JSON.stringify({invalidAnchors,errors}));
- if(!process.argv.includes('--check-only'))await page.pdf({path:path.join(directory,'report.pdf'),format:'A4',printBackground:true,displayHeaderFooter:true,headerTemplate:'<span></span>',footerTemplate:'<div style="font-size:9px;width:100%;text-align:center;color:#777">Visual SLAM Lab · <span class="pageNumber"></span> / <span class="totalPages"></span></div>',preferCSSPageSize:true});
+ if(!process.argv.includes('--check-only'))await page.pdf({path:path.join(directory,'report.pdf'),format:'A4',printBackground:true,displayHeaderFooter:true,headerTemplate:'<span></span>',footerTemplate:'<div style="font-size:9px;width:100%;text-align:center;color:#777">SLAM Lab · <span class="pageNumber"></span> / <span class="totalPages"></span></div>',preferCSSPageSize:true});
  console.log(JSON.stringify({pdf:path.join(directory,'report.pdf'),images:localImages.length,diagrams,invalidAnchors,errors,checkOnly:process.argv.includes('--check-only')}));
 }finally{await browser.close();}
