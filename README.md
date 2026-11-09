@@ -10,7 +10,7 @@ The local workspace is `/Users/youth/Project/slam-lab`; reopen that folder in
 VSCode after the rename. Virtual-environment launchers were updated for the new
 path. Historical reports keep their original names and provenance.
 
-## Study Report
+## Study Textbook and Report
 
 **[Current Study Report (PDF)](docs/report.pdf)** · [Editable source](docs/report.md)
 
@@ -18,6 +18,13 @@ One versioned Korean document covers ORB/FAST/Harris/BRIEF, corrected scale
 pyramids, VO geometry, KISS-ICP LO, evaluation, loop candidates, integrated
 playback and sensor audits. Update the same source, its version and changelog;
 do not create new dated reports. Historical research reports remain archives.
+
+Version 2.0 adds 12 foundational lessons, 24 worked exercises and 15 generated
+figures: vectors, transforms, projection, stereo, residuals, SVD, uncertainty,
+MLE/MAP, Jacobians, rotation updates, factor graphs and IMU timing. Synthetic
+teaching models are distinguished from actual KITTI outputs. Reproduce these
+examples with `research/foundations-textbook/src/generate.py` using the existing
+research Python environment. This does not add production SLAM or sensor fusion.
 
 Build the current PDF with `node tools/render_report.mjs`. The renderer checks
 figure paths, image decoding, Mermaid diagrams and table-of-contents anchors.
