@@ -39,7 +39,8 @@ def main():
         textpage.close()
         page.close()
     full = re.sub(r'\s+', '', '\n'.join(pages))
-    assert 'v2.0.0' in full
+    version = re.search(r'문서 버전: (v\d+\.\d+\.\d+)', source).group(1)
+    assert version in pages[0], 'PDF title page does not match source version'
     assert len(starts) == 12
     for lesson in range(1, 13):
         for exercise in (1, 2):
@@ -61,7 +62,7 @@ def main():
     # Full-size lesson starts plus real-data projection and ending pages.
     selected = set(starts.values()) | {1, len(pdf)}
     for index, text in enumerate(pages):
-        if any(label in re.sub(r'\s+', '', text) for label in ('그림A3-2.', '그림A7.', '그림A9.', '그림A11-2.')):
+        if any(label in re.sub(r'\s+', '', text) for label in ('그림A3-2.', '그림A7.', '그림A9.', '그림A11-2.', '표B1.', '표B2.', '표B3.', '결과:JSON1개')):
             selected.add(index + 1)
     for number in sorted(selected):
         page = pdf[number-1]
