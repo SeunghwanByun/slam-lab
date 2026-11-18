@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "planned_not_recorded",
+  "device": {"exact_model": null, "firmware": null, "sdk_version": null},
+  "host": {"os": null, "architecture": null},
+  "streams": {
+    "color": {"width": null, "height": null, "fps": null, "encoding": null},
+    "depth": {"width": null, "height": null, "fps": null, "encoding": null,
+      "meters_per_unit": null, "invalid_values": null,
+      "aligned_to_color": null, "alignment_method": null}
+  },
+  "calibration": {"color_intrinsics": null, "depth_intrinsics": null,
+    "distortion_model": null, "T_color_depth": null,
+    "transform_translation_unit": "m", "source": null},
+  "timing": {"clock_domain": null, "timestamp_unit": null,
+    "synchronization_method": null, "measured_offset_ms": null},
+  "trial": {"name": null, "lighting": null, "route": null,
+    "measured_distances_m": [], "ground_truth_available": false},
+  "outputs": {"recording": null, "map_database": null,
+    "trajectory": null, "point_cloud": null, "metrics": null}
+}
