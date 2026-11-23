@@ -1,0 +1,6 @@
+# Observed direct dependencies; reuse the supplied interpreter, do not reinstall it.
+# This is not a complete platform-independent lockfile.
+numpy==2.4.6
+scipy==1.17.1
+opencv-python==5.0.0.93
+matplotlib==3.11.1

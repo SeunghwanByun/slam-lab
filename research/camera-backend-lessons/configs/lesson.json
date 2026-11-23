@@ -1,0 +1,34 @@
+{
+  "seed": 20261124,
+  "ba": {
+    "cameras": 4,
+    "points": 36,
+    "fx_px": 520.0,
+    "fy_px": 520.0,
+    "cx_px": 320.0,
+    "cy_px": 240.0,
+    "width_px": 640,
+    "height_px": 480,
+    "baseline_m": 0.24,
+    "noise_px": 0.6,
+    "outlier_fraction": 0.1,
+    "outlier_sigma_px": 24.0,
+    "initial_rotation_sigma_rad": 0.018,
+    "initial_translation_sigma_m": 0.08,
+    "initial_point_sigma_m": 0.16,
+    "robust_f_scale_px": 1.2,
+    "max_nfev": 200
+  },
+  "graph": {
+    "nodes": 25,
+    "radius_m": 4.0,
+    "odometry_translation_sigma_m": 0.04,
+    "odometry_rotation_sigma_rad": 0.012,
+    "odometry_rotation_bias_rad": 0.008,
+    "loop_translation_sigma_m": 0.02,
+    "loop_rotation_sigma_rad": 0.008,
+    "false_loop_translation_m": [2.0, -1.5],
+    "false_loop_rotation_rad": 0.45,
+    "max_nfev": 200
+  }
+}
