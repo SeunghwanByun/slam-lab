@@ -1,0 +1,832 @@
+{
+  "schema_version": 1,
+  "provenance": "Python rerun of the original Node.js checks; not an original-session log",
+  "scope": "Synthetic arithmetic and matrix checks only; no dataset or solver experiments",
+  "source_note": "geometry-literature.md",
+  "script": "geometry-verification.py",
+  "script_sha256": "6fbb33856ab30ee677a0591e5c7462e806e336588c4cdf4c8bb42f49a1e9da67",
+  "generated_at_utc": "2026-11-23T23:08:27.078097+00:00",
+  "python_version": "3.11.14",
+  "command_from_repo_root": "python3 research/camera-slam-textbook/notes/geometry-verification.py",
+  "relative_tolerance": 0,
+  "counts": {
+    "arithmetic": 61,
+    "matrix": 8
+  },
+  "total": 69,
+  "passed": 69,
+  "status": "passed",
+  "checks": [
+    {
+      "id": 1,
+      "name": "N1 normalized x",
+      "category": "arithmetic",
+      "expression": "(400-320)/800",
+      "actual": 0.1,
+      "expected": 0.1,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 2,
+      "name": "N1 normalized y",
+      "category": "arithmetic",
+      "expression": "(300-240)/600",
+      "actual": 0.1,
+      "expected": 0.1,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 3,
+      "name": "N1 ray norm",
+      "category": "arithmetic",
+      "expression": "sqrt(1.02)",
+      "actual": 1.0099504938362078,
+      "expected": 1.009950494,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 1.6379209100136904e-10,
+      "passed": true
+    },
+    {
+      "id": 4,
+      "name": "N1 unit ray x/y",
+      "category": "arithmetic",
+      "expression": ".1/sqrt(1.02)",
+      "actual": 0.09901475429766743,
+      "expected": 0.099014754,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 2.9766743236958604e-10,
+      "passed": true
+    },
+    {
+      "id": 5,
+      "name": "N1 unit ray z",
+      "category": "arithmetic",
+      "expression": "1/sqrt(1.02)",
+      "actual": 0.9901475429766743,
+      "expected": 0.990147543,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 2.3325674725072076e-11,
+      "passed": true
+    },
+    {
+      "id": 6,
+      "name": "N2 distorted u",
+      "category": "arithmetic",
+      "expression": ".2*(1-.2*.05)*500+320",
+      "actual": 419.0,
+      "expected": 419,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 7,
+      "name": "N2 distorted v",
+      "category": "arithmetic",
+      "expression": ".1*.99*500+240",
+      "actual": 289.5,
+      "expected": 289.5,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 8,
+      "name": "N3 normalized x",
+      "category": "arithmetic",
+      "expression": "(190-150)/400",
+      "actual": 0.1,
+      "expected": 0.1,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 9,
+      "name": "N3 normalized y",
+      "category": "arithmetic",
+      "expression": "(130-100)/300",
+      "actual": 0.1,
+      "expected": 0.1,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 10,
+      "name": "N4 row interval s",
+      "category": "arithmetic",
+      "expression": ".02/1000",
+      "actual": 2e-05,
+      "expected": 2e-05,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 11,
+      "name": "N4 displacement px",
+      "category": "arithmetic",
+      "expression": "500*20e-6*200",
+      "actual": 2.0,
+      "expected": 2,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 12,
+      "name": "N5 blur 10ms px",
+      "category": "arithmetic",
+      "expression": "500*2/10*.01",
+      "actual": 1.0,
+      "expected": 1,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 13,
+      "name": "N5 blur 2ms px",
+      "category": "arithmetic",
+      "expression": "500*2/10*.002",
+      "actual": 0.2,
+      "expected": 0.2,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 14,
+      "name": "N6 irradiance first",
+      "category": "arithmetic",
+      "expression": "80/(.01*.8)",
+      "actual": 10000.0,
+      "expected": 10000,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 15,
+      "name": "N6 irradiance second",
+      "category": "arithmetic",
+      "expression": "160/(.02*.8)",
+      "actual": 10000.0,
+      "expected": 10000,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 16,
+      "name": "N6 clipped estimate",
+      "category": "arithmetic",
+      "expression": "255/(.04*.8)",
+      "actual": 7968.75,
+      "expected": 7968.75,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 17,
+      "name": "N7 RGB gray",
+      "category": "arithmetic",
+      "expression": ".299*100+.587*150+.114*200",
+      "actual": 140.75,
+      "expected": 140.75,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 18,
+      "name": "N7 swapped gray",
+      "category": "arithmetic",
+      "expression": ".299*200+.587*150+.114*100",
+      "actual": 159.25,
+      "expected": 159.25,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 19,
+      "name": "N8 first u",
+      "category": "arithmetic",
+      "expression": "500*2/5+320",
+      "actual": 520.0,
+      "expected": 520,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 20,
+      "name": "N8 second u",
+      "category": "arithmetic",
+      "expression": "500/5+320",
+      "actual": 420.0,
+      "expected": 420,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 21,
+      "name": "N8 scalar epipolar residual",
+      "category": "arithmetic",
+      "expression": ".2-.2",
+      "actual": 0.0,
+      "expected": 0,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 22,
+      "name": "N9 plane shift px",
+      "category": "arithmetic",
+      "expression": "500*(-.2)",
+      "actual": -100.0,
+      "expected": -100,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 23,
+      "name": "N9 other depth shift px",
+      "category": "arithmetic",
+      "expression": "500*(-1/10)",
+      "actual": -50.0,
+      "expected": -50,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 24,
+      "name": "N10 centroid distance",
+      "category": "arithmetic",
+      "expression": "hypot(1,1)",
+      "actual": 1.4142135623730951,
+      "expected": 1.4142135623730951,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 25,
+      "name": "N11 five-point trials",
+      "category": "arithmetic",
+      "expression": "ceil(log(.01)/log(1-.5**5))",
+      "actual": 146,
+      "expected": 146,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0,
+      "passed": true
+    },
+    {
+      "id": 26,
+      "name": "N11 eight-point trials",
+      "category": "arithmetic",
+      "expression": "ceil(log(.01)/log(1-.5**8))",
+      "actual": 1177,
+      "expected": 1177,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0,
+      "passed": true
+    },
+    {
+      "id": 27,
+      "name": "N12 Sampson squared px",
+      "category": "arithmetic",
+      "expression": "2**2/2",
+      "actual": 2.0,
+      "expected": 2,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 28,
+      "name": "N13 depth m",
+      "category": "arithmetic",
+      "expression": "1/(.4-.2)",
+      "actual": 5.0,
+      "expected": 5,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 29,
+      "name": "N14 angle rad",
+      "category": "arithmetic",
+      "expression": "atan(.2/10)",
+      "actual": 0.019997333973150535,
+      "expected": 0.019997334,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 2.684946362463414e-11,
+      "passed": true
+    },
+    {
+      "id": 30,
+      "name": "N14 near angle deg",
+      "category": "arithmetic",
+      "expression": "degrees(atan(.2/10))",
+      "actual": 1.1457628381751035,
+      "expected": 1.145763,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 1.6182489659399835e-07,
+      "passed": true
+    },
+    {
+      "id": 31,
+      "name": "N14 far angle deg",
+      "category": "arithmetic",
+      "expression": "degrees(atan(.2/100))",
+      "actual": 0.11459140623778596,
+      "expected": 0.114591,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 4.0623778596593496e-07,
+      "passed": true
+    },
+    {
+      "id": 32,
+      "name": "N16 corrected depth m",
+      "category": "arithmetic",
+      "expression": "500*.2/(25-5)",
+      "actual": 5.0,
+      "expected": 5,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 33,
+      "name": "N16 wrong depth m",
+      "category": "arithmetic",
+      "expression": "500*.2/25",
+      "actual": 4.0,
+      "expected": 4,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 34,
+      "name": "N16 right reprojection px",
+      "category": "arithmetic",
+      "expression": "500*(.5-.2)/5+315",
+      "actual": 345.0,
+      "expected": 345,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 35,
+      "name": "N17 near sigma m",
+      "category": "arithmetic",
+      "expression": "100*.5/20**2",
+      "actual": 0.125,
+      "expected": 0.125,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 36,
+      "name": "N17 far sigma m",
+      "category": "arithmetic",
+      "expression": "100*.5/10**2",
+      "actual": 0.5,
+      "expected": 0.5,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 37,
+      "name": "N18 exact du px",
+      "category": "arithmetic",
+      "expression": "500/5.01-100",
+      "actual": -0.19960079840319622,
+      "expected": -0.199600798,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 4.0319622640616615e-10,
+      "passed": true
+    },
+    {
+      "id": 38,
+      "name": "N18 exact dv px",
+      "category": "arithmetic",
+      "expression": "250/5.01-50",
+      "actual": -0.09980039920159811,
+      "expected": -0.099800399,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 2.0159811320308307e-10,
+      "passed": true
+    },
+    {
+      "id": 39,
+      "name": "N20 solution du px",
+      "category": "arithmetic",
+      "expression": "(2*3-0)/3",
+      "actual": 2.0,
+      "expected": 2,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 40,
+      "name": "N20 solution dv px",
+      "category": "arithmetic",
+      "expression": "(-3+0)/3",
+      "actual": -1.0,
+      "expected": -1,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 41,
+      "name": "N20 normal equation row1",
+      "category": "arithmetic",
+      "expression": "2*2-1",
+      "actual": 3,
+      "expected": 3,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0,
+      "passed": true
+    },
+    {
+      "id": 42,
+      "name": "N20 normal equation row2",
+      "category": "arithmetic",
+      "expression": "2-2",
+      "actual": 0,
+      "expected": 0,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0,
+      "passed": true
+    },
+    {
+      "id": 43,
+      "name": "N22 coarse displacement px",
+      "category": "arithmetic",
+      "expression": "24/2**3",
+      "actual": 3.0,
+      "expected": 3,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 44,
+      "name": "N22 original patch width px",
+      "category": "arithmetic",
+      "expression": "7*2**3",
+      "actual": 56,
+      "expected": 56,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0,
+      "passed": true
+    },
+    {
+      "id": 45,
+      "name": "Exercise1 reprojection u",
+      "category": "arithmetic",
+      "expression": "400*.8/8+300",
+      "actual": 340.0,
+      "expected": 340,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 46,
+      "name": "Exercise1 reprojection v",
+      "category": "arithmetic",
+      "expression": "500*(-.8)/8+200",
+      "actual": 150.0,
+      "expected": 150,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 47,
+      "name": "Exercise2 distorted u",
+      "category": "arithmetic",
+      "expression": ".3*.975*600",
+      "actual": 175.5,
+      "expected": 175.5,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 48,
+      "name": "Exercise2 distorted v",
+      "category": "arithmetic",
+      "expression": ".4*.975*600",
+      "actual": 234.0,
+      "expected": 234,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 49,
+      "name": "Exercise3 line distance px",
+      "category": "arithmetic",
+      "expression": "(3*20+4*12-100)/5",
+      "actual": 1.6,
+      "expected": 1.6,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 50,
+      "name": "Exercise4 RANSAC trials",
+      "category": "arithmetic",
+      "expression": "ceil(log(.01)/log(1-.6**5))",
+      "actual": 57,
+      "expected": 57,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0,
+      "passed": true
+    },
+    {
+      "id": 51,
+      "name": "Exercise6 corrected depth m",
+      "category": "arithmetic",
+      "expression": "600*.3/(40-10)",
+      "actual": 6.0,
+      "expected": 6,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 52,
+      "name": "Exercise6 wrong depth m",
+      "category": "arithmetic",
+      "expression": "600*.3/40",
+      "actual": 4.5,
+      "expected": 4.5,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 53,
+      "name": "Exercise6 relative error",
+      "category": "arithmetic",
+      "expression": "(4.5-6)/6",
+      "actual": -0.25,
+      "expected": -0.25,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 54,
+      "name": "Exercise7 reprojection u",
+      "category": "arithmetic",
+      "expression": "500*1/5+320",
+      "actual": 420.0,
+      "expected": 420,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 55,
+      "name": "Exercise8 G11",
+      "category": "arithmetic",
+      "expression": "2**2+1**2+3**2",
+      "actual": 14,
+      "expected": 14,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0,
+      "passed": true
+    },
+    {
+      "id": 56,
+      "name": "Exercise9 blur px",
+      "category": "arithmetic",
+      "expression": "150*.008",
+      "actual": 1.2,
+      "expected": 1.2,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 57,
+      "name": "Exercise11 range m",
+      "category": "arithmetic",
+      "expression": "sqrt(34)",
+      "actual": 5.830951894845301,
+      "expected": 5.830951895,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 1.54699364429689e-10,
+      "passed": true
+    },
+    {
+      "id": 58,
+      "name": "Exercise11 range-based X m",
+      "category": "arithmetic",
+      "expression": "5*.6/sqrt(1.36)",
+      "actual": 2.5724787771376323,
+      "expected": 2.572478777,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 1.376321279167314e-10,
+      "passed": true
+    },
+    {
+      "id": 59,
+      "name": "Exercise11 range-based Z m",
+      "category": "arithmetic",
+      "expression": "5/sqrt(1.36)",
+      "actual": 4.287464628562721,
+      "expected": 4.287464629,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 4.3727865772780206e-10,
+      "passed": true
+    },
+    {
+      "id": 60,
+      "name": "Exercise12 first irradiance",
+      "category": "arithmetic",
+      "expression": "60/.005",
+      "actual": 12000.0,
+      "expected": 12000,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 61,
+      "name": "Exercise12 second irradiance",
+      "category": "arithmetic",
+      "expression": "120/.010",
+      "actual": 12000.0,
+      "expected": 12000,
+      "absolute_tolerance": 1e-06,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 62,
+      "name": "N8 matrix epipolar residual",
+      "category": "matrix",
+      "expression": "q2^T E q1",
+      "actual": 0.0,
+      "expected": 0,
+      "absolute_tolerance": 1e-10,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 63,
+      "name": "N8 K projection",
+      "category": "matrix",
+      "expression": "K q1; K=[[500,0,320],[0,500,240],[0,0,1]]",
+      "actual": [
+        520.0,
+        340.0,
+        1.0
+      ],
+      "expected": [
+        520,
+        340,
+        1
+      ],
+      "absolute_tolerance": 1e-10,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 64,
+      "name": "N9 normalized homography",
+      "category": "matrix",
+      "expression": "Hn q1; Hn=[[1,0,-.2],[0,1,0],[0,0,1]]",
+      "actual": [
+        0.2,
+        0.2,
+        1.0
+      ],
+      "expected": [
+        0.2,
+        0.2,
+        1
+      ],
+      "absolute_tolerance": 1e-10,
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": 65,
+      "name": "N9 pixel homography",
+      "category": "matrix",
+      "expression": "Hp*[520,340,1]; Hp=[[1,0,-100],[0,1,0],[0,0,1]]",
+      "actual": [
+        420,
+        340,
+        1
+      ],
+      "expected": [
+        420,
+        340,
+        1
+      ],
+      "absolute_tolerance": 1e-10,
+      "max_absolute_error": 0,
+      "passed": true
+    },
+    {
+      "id": 66,
+      "name": "N20 LK residual",
+      "category": "matrix",
+      "expression": "A*[2,-1]; A=[[1,0],[0,1],[1,1]]",
+      "actual": [
+        2,
+        -1,
+        1
+      ],
+      "expected": [
+        2,
+        -1,
+        1
+      ],
+      "absolute_tolerance": 1e-10,
+      "max_absolute_error": 0,
+      "passed": true
+    },
+    {
+      "id": 67,
+      "name": "N21 eigenvalue3",
+      "category": "matrix",
+      "expression": "G*[1,1]; G=[[2,1],[1,2]]",
+      "actual": [
+        3,
+        3
+      ],
+      "expected": [
+        3,
+        3
+      ],
+      "absolute_tolerance": 1e-10,
+      "max_absolute_error": 0,
+      "passed": true
+    },
+    {
+      "id": 68,
+      "name": "N21 eigenvalue1",
+      "category": "matrix",
+      "expression": "G*[1,-1]; G=[[2,1],[1,2]]",
+      "actual": [
+        1,
+        -1
+      ],
+      "expected": [
+        1,
+        -1
+      ],
+      "absolute_tolerance": 1e-10,
+      "max_absolute_error": 0,
+      "passed": true
+    },
+    {
+      "id": 69,
+      "name": "Exercise8 unobserved vertical motion",
+      "category": "matrix",
+      "expression": "A*[2,99]; A=[[2,0],[1,0],[3,0]]",
+      "actual": [
+        4,
+        2,
+        6
+      ],
+      "expected": [
+        4,
+        2,
+        6
+      ],
+      "absolute_tolerance": 1e-10,
+      "max_absolute_error": 0,
+      "passed": true
+    }
+  ]
+}
