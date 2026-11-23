@@ -1,0 +1,396 @@
+[
+  {
+    "file": "figures/01_rectified_pair.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/stereo/000000.npz"
+    ],
+    "caption_ko": "\uc774\ubbf8 \uc815\ub958\ub41c \uc88c\uc6b0 \uc785\ub825\uc5d0 \uac19\uc740 y\uc120\uc744 \uadf8\ub838\ub2e4. raw \uc7ac\uc815\ub958\ub97c \uc218\ud589\ud55c \uadf8\ub9bc\uc774 \uc544\ub2c8\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/02_epipolar_residual.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/stereo/000000.npz"
+    ],
+    "caption_ko": "\uac8c\uc774\ud2b8 \uc804 y \uc624\ucc28\uc758 \ub204\uc801 \ubd84\ud3ec. \uac8c\uc774\ud2b8 \ud6c4 100% \uc77c\uad00\uc131\uc740 \uc815\uc758\uc5d0 \ub530\ub978 \uacb0\uacfc\uc774\uc9c0 \uc815\ud655\ub3c4 \uac80\uc99d\uc774 \uc544\ub2c8\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/03_orb_spatial.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/stereo/000000.npz"
+    ],
+    "caption_ko": "ORB\ub294 2D \ud53d\uc140 \uad00\uce21\uc774\ub2e4. \ud2b9\uc9d5\uc810\ub9cc\uc73c\ub85c 3D \uc9c0\ub3c4\ub098 ORB-SLAM\uc774 \ub418\uc9c0 \uc54a\ub294\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/04_descriptor_ratio.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/stereo/000000.npz"
+    ],
+    "caption_ko": "\uc774\uc9c4 descriptor\uc758 \ucd5c\uadfc\uc811/\ucc28\uadfc\uc811 \uac70\ub9ac \ube44\uc728. \uc2e4\uc81c \uc120\ud0dd \uc870\uac74\uc740 d1 < 0.75*d2\uc774\uba70 d2=0\uc740 \uac70\ubd80\ub41c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/05_hamming_geometry.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/stereo/000000.npz"
+    ],
+    "caption_ko": "\uc791\uc740 descriptor \uac70\ub9ac\ub3c4 \uae30\ud558 \uc77c\uad00\uc131\uc744 \ubcf4\uc7a5\ud558\uc9c0 \uc54a\ub294\ub2e4. 60px \uc774\uc0c1\uc758 y \uc624\ucc28\ub294 \uc2dc\uac01\ud654\uc5d0\uc11c\ub9cc \uc798\ub790\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/06_stereo_gate_ablation.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/stereo/000000.npz",
+      "artifacts/stereo/000000_ablation.csv"
+    ],
+    "caption_ko": "\ub3d9\uc77c \ud6c4\ubcf4\uc5d0 \uc801\uc6a9\ud55c \ub204\uc801 \uac8c\uc774\ud2b8. \uc774 \ud504\ub808\uc784\uc5d0\uc11c\ub294 Hamming \uac8c\uc774\ud2b8\uc758 \ucd94\uac00 \uc81c\uac70\uac00 \uc5c6\uc73c\ubbc0\ub85c \uac1c\uc120\uc744 \uc8fc\uc7a5\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/07_disparity_depth.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/stereo/000000.npz"
+    ],
+    "caption_ko": "Z=fx*b/d. \uae4a\uc774\ub294 \uc815\ub2f5 \uc624\ucc28\uac00 \uc544\ub2c8\ub77c \uc54c\ub824\uc9c4 baseline\uc73c\ub85c\ubd80\ud130 \uc5bb\uc740 \ucd94\uc815\uac12\uc774\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/08_sparse_geometry.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/stereo/000000.npz"
+    ],
+    "caption_ko": "\uce74\uba54\ub77c \uc88c\ud45c\ub294 x \uc624\ub978\ucabd, y \uc544\ub798, z \uc804\ubc29. \uba3c \uc810\uc758 \uae4a\uc774\ub294 disparity \uc624\ucc28\uc5d0 \ubbfc\uac10\ud558\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/09_triangulation_reprojection.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/stereo/000000.npz"
+    ],
+    "caption_ko": "\ub450 \uc2dc\uc810 \uc7ac\ud22c\uc601\uc740 \uc785\ub825\uacfc\uc758 \uc790\uae30 \uc77c\uad00\uc131\uc774\ub2e4. \uc791\uc740 \uc794\ucc28\ub9cc\uc73c\ub85c \uc62c\ubc14\ub978 \ub300\uc751\uc774\ub098 \uae4a\uc774\ub97c \ubcf4\uc7a5\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/10_sgbm_disparity.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/dense/000000.npz"
+    ],
+    "caption_ko": "SGBM \uace0\uc815\uc18c\uc218\uc810 \ucd9c\ub825\uc744 16\uc73c\ub85c \ub098\ub208 \ub4a4 \uc591\uc758 disparity, LR, \uae4a\uc774 \uc0c1\ud55c\uc744 \uc801\uc6a9. \ud770 \uc601\uc5ed\uc740 \ubb34\ud6a8, \uc0c9 \uc0c1\ud55c\uc740 \ud45c\uc2dc\ub9cc \uc81c\ud55c\ud55c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/11_sgbm_depth_m.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/dense/000000.npz"
+    ],
+    "caption_ko": "SGBM \uace0\uc815\uc18c\uc218\uc810 \ucd9c\ub825\uc744 16\uc73c\ub85c \ub098\ub208 \ub4a4 \uc591\uc758 disparity, LR, \uae4a\uc774 \uc0c1\ud55c\uc744 \uc801\uc6a9. \ud770 \uc601\uc5ed\uc740 \ubb34\ud6a8, \uc0c9 \uc0c1\ud55c\uc740 \ud45c\uc2dc\ub9cc \uc81c\ud55c\ud55c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/12_sgbm_validity.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/dense/000000.npz"
+    ],
+    "caption_ko": "\ubaa8\ub4e0 \ud53d\uc140\uc744 \ubd84\ubaa8\ub85c \ud55c \ub2e8\uacc4\ubcc4 \uc720\ud6a8\uc131. \uc88c\uc6b0 \uac80\uc99d\uc774 \ud14d\uc2a4\ucc98 \ubd80\uc7ac\u00b7\ubc18\ubcf5 \ubb34\ub2ac\uc758 \uc624\ub2f5\uc744 \ubaa8\ub450 \uc81c\uac70\ud558\uc9c0\ub294 \uc54a\ub294\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/13_sgbm_lr_residual.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/dense/000000.npz"
+    ],
+    "caption_ko": "\uc6b0\uce21 disparity\ub294 \uc74c\uc218 convention. \uc601\uc0c1 \ubc16 \ub300\uc751\ub3c4 \uc6d0\ub798 \ubc30\uc5f4\uc5d0 \ubcf4\uc874\ub418\uba70 \ucd5c\uc885 mask\uc5d0\uc11c \uc81c\uac70\ub41c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/14_lk_tracks.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/tracking/000000.npz"
+    ],
+    "caption_ko": "\uc6d0\ub798 \ud53d\uc140 \uae38\uc774\uc758 \ud750\ub984 \ubca1\ud130. \ud45c\uc2dc \uac1c\uc218\ub9cc \uc904\uc600\uc73c\uba70 \uc804\ud6c4\ubc29 mask\ub294 \uc804\uccb4 \uad00\uce21\uc5d0 \uc801\uc6a9\ud55c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/15_lk_fb_distribution.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/tracking/000000.npz"
+    ],
+    "caption_ko": "\uc804\ud6c4\ubc29 \ucd94\uc801\uc740 \uc790\uae30 \uc77c\uad00\uc131 \uac80\uc0ac\uc774\uba70 flow GT \uc815\ud655\ub3c4\uac00 \uc544\ub2c8\ub2e4. \uc798\ubabb\ub41c \ubc18\ubcf5 \ubb34\ub2ac\ub3c4 \ud1b5\uacfc\ud560 \uc218 \uc788\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/16_lk_error_scatter.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/tracking/000000.npz"
+    ],
+    "caption_ko": "LK patch \ubc1d\uae30 \uc794\ucc28\uc640 \uae30\ud558\uc801 \uc655\ubcf5 \uc794\ucc28\ub294 \uc11c\ub85c \ub2e4\ub978 \uae30\uc900\uc774\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/17_pose_only_refinement.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/reprojection/000000.npz"
+    ],
+    "caption_ko": "3D\uc810\uc744 \uace0\uc815\ud558\uace0 \uc790\uc138\ub9cc LM \ucd5c\uc801\ud654\ud55c\ub2e4. \uac19\uc740 inlier\uc758 \uc7ac\ud22c\uc601 \uac1c\uc120\uc774\uba70 joint BA\ub098 \uc77c\ubc18\ud654 \ud3c9\uac00\uac00 \uc544\ub2c8\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000000_000200_stereo_fb_trajectory.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000000_000200/stages.npz",
+      "artifacts/odometry/000000_000200/frames.csv"
+    ],
+    "caption_ko": "\uc2a4\ud14c\ub808\uc624\ub294 \ucc99\ub3c4 \uc801\ud569 \uc5c6\uc74c. \ub2e8\uc548\uc740 GT\ub85c Sim3 \uc801\ud569\ud55c \ud615\ud0dc \uc9c4\ub2e8\uc774\ubbc0\ub85c \ub450 \uadf8\ub9bc\uc744 \uacf5\uc815\ud55c \uc815\ud655\ub3c4 \uc21c\uc704\ub85c \ud574\uc11d\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000000_000200_mono_unit_trajectory.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000000_000200/stages.npz",
+      "artifacts/odometry/000000_000200/frames.csv"
+    ],
+    "caption_ko": "\uc2a4\ud14c\ub808\uc624\ub294 \ucc99\ub3c4 \uc801\ud569 \uc5c6\uc74c. \ub2e8\uc548\uc740 GT\ub85c Sim3 \uc801\ud569\ud55c \ud615\ud0dc \uc9c4\ub2e8\uc774\ubbc0\ub85c \ub450 \uadf8\ub9bc\uc744 \uacf5\uc815\ud55c \uc815\ud655\ub3c4 \uc21c\uc704\ub85c \ud574\uc11d\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000000_000200_metric_errors.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000000_000200/stages.npz",
+      "artifacts/odometry/000000_000200/frames.csv"
+    ],
+    "caption_ko": "\ub3d9\uc77c \uad6c\uac04\u00b7metric \ucc99\ub3c4\uc758 FB on/off \ube44\uad50. \uac1c\uc120 \ub610\ub294 \uc545\ud654\ub97c \uc788\ub294 \uadf8\ub300\ub85c \ud45c\uc2dc\ud55c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000000_000200_inlier_counts.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000000_000200/stages.npz",
+      "artifacts/odometry/000000_000200/frames.csv"
+    ],
+    "caption_ko": "E\ub294 \uc804\uccb4 ORB\uc758 temporal track, PnP\ub294 stereo \uc720\ud6a8 3D \ubd80\ubd84\uc9d1\ud569\uc744 \uc0ac\uc6a9\ud55c\ub2e4. \uac19\uc740 \uad00\uce21 \uc218\uc758 \ube44\uad50\uac00 \uc544\ub2c8\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000000_000200_step_scale.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000000_000200/stages.npz",
+      "artifacts/odometry/000000_000200/frames.csv",
+      "artifacts/odometry/000000_000200/poses.npz"
+    ],
+    "caption_ko": "\ub2e8\uc548\uc758 \uc131\uacf5 \uc774\ub3d9\ub7c9\uc740 \ud56d\uc0c1 1\uc774\uba70 \uc2e4\ud328\ub294 0\uc774\ub2e4. \ud558\ub098\uc758 Sim3 scale\uc740 \uc2e4\uc81c \uc18d\ub3c4 \ubcc0\ud654\ub098 \uc783\uc740 \uc774\ub3d9\uc744 \ubcf5\uc6d0\ud558\uc9c0 \ubabb\ud55c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000000_000200_relative_errors.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000000_000200/stages.npz",
+      "artifacts/odometry/000000_000200/frames.csv"
+    ],
+    "caption_ko": "1-frame RPE\uc774\uba70 KITTI \uacf5\uc2dd 100..800m \uad6c\uac04 \uc810\uc218\uac00 \uc544\ub2c8\ub2e4. \ud68c\uc804 RPE\ub294 \ubcc4\ub3c4 CSV/JSON\uc5d0 \ubcf4\uc874\ud55c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000000_000200_fb_ablation.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000000_000200/stages.npz",
+      "artifacts/odometry/000000_000200/frames.csv"
+    ],
+    "caption_ko": "FB \uac8c\uc774\ud2b8 \uc678 \ub3d9\uc77c \uc124\uc815. RANSAC \uc785\ub825 \uc9d1\ud569 \ubcc0\ud654\ub85c \uacb0\uacfc\uac00 \ub2ec\ub77c\uc9c4\ub2e4. \uc778\uacfc\uc801 \uc77c\ubc18\ud654\ub098 \uc131\ub2a5 \uac1c\uc120 \ubcf4\uc7a5\uc740 \uc544\ub2c8\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000000_000200_worst_frame.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000000_000200/stages.npz",
+      "artifacts/odometry/000000_000200/frames.csv",
+      "artifacts/odometry/000000_000200/000001.npz",
+      "data/kitti/dataset/sequences/00/image_0/000001.png"
+    ],
+    "caption_ko": "\ud3c9\uac00\uc5d0\uc11c \ucd5c\ub300 RPE \ud504\ub808\uc784\uc744 \uc0ac\ud6c4 \uc120\ud0dd\ud55c \uc9c4\ub2e8. \ub3d9\uc801 \uac1d\uccb4\u00b7\uac00\ub9bc \uc5ec\ubd80\ub294 GT mask\uac00 \uc5c6\uc5b4 \ud655\uc815\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000400_000500_stereo_fb_trajectory.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000400_000500/stages.npz",
+      "artifacts/odometry/000400_000500/frames.csv"
+    ],
+    "caption_ko": "\uc2a4\ud14c\ub808\uc624\ub294 \ucc99\ub3c4 \uc801\ud569 \uc5c6\uc74c. \ub2e8\uc548\uc740 GT\ub85c Sim3 \uc801\ud569\ud55c \ud615\ud0dc \uc9c4\ub2e8\uc774\ubbc0\ub85c \ub450 \uadf8\ub9bc\uc744 \uacf5\uc815\ud55c \uc815\ud655\ub3c4 \uc21c\uc704\ub85c \ud574\uc11d\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000400_000500_mono_unit_trajectory.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000400_000500/stages.npz",
+      "artifacts/odometry/000400_000500/frames.csv"
+    ],
+    "caption_ko": "\uc2a4\ud14c\ub808\uc624\ub294 \ucc99\ub3c4 \uc801\ud569 \uc5c6\uc74c. \ub2e8\uc548\uc740 GT\ub85c Sim3 \uc801\ud569\ud55c \ud615\ud0dc \uc9c4\ub2e8\uc774\ubbc0\ub85c \ub450 \uadf8\ub9bc\uc744 \uacf5\uc815\ud55c \uc815\ud655\ub3c4 \uc21c\uc704\ub85c \ud574\uc11d\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000400_000500_metric_errors.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000400_000500/stages.npz",
+      "artifacts/odometry/000400_000500/frames.csv"
+    ],
+    "caption_ko": "\ub3d9\uc77c \uad6c\uac04\u00b7metric \ucc99\ub3c4\uc758 FB on/off \ube44\uad50. \uac1c\uc120 \ub610\ub294 \uc545\ud654\ub97c \uc788\ub294 \uadf8\ub300\ub85c \ud45c\uc2dc\ud55c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000400_000500_inlier_counts.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000400_000500/stages.npz",
+      "artifacts/odometry/000400_000500/frames.csv"
+    ],
+    "caption_ko": "E\ub294 \uc804\uccb4 ORB\uc758 temporal track, PnP\ub294 stereo \uc720\ud6a8 3D \ubd80\ubd84\uc9d1\ud569\uc744 \uc0ac\uc6a9\ud55c\ub2e4. \uac19\uc740 \uad00\uce21 \uc218\uc758 \ube44\uad50\uac00 \uc544\ub2c8\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000400_000500_step_scale.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000400_000500/stages.npz",
+      "artifacts/odometry/000400_000500/frames.csv",
+      "artifacts/odometry/000400_000500/poses.npz"
+    ],
+    "caption_ko": "\ub2e8\uc548\uc758 \uc131\uacf5 \uc774\ub3d9\ub7c9\uc740 \ud56d\uc0c1 1\uc774\uba70 \uc2e4\ud328\ub294 0\uc774\ub2e4. \ud558\ub098\uc758 Sim3 scale\uc740 \uc2e4\uc81c \uc18d\ub3c4 \ubcc0\ud654\ub098 \uc783\uc740 \uc774\ub3d9\uc744 \ubcf5\uc6d0\ud558\uc9c0 \ubabb\ud55c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000400_000500_relative_errors.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000400_000500/stages.npz",
+      "artifacts/odometry/000400_000500/frames.csv"
+    ],
+    "caption_ko": "1-frame RPE\uc774\uba70 KITTI \uacf5\uc2dd 100..800m \uad6c\uac04 \uc810\uc218\uac00 \uc544\ub2c8\ub2e4. \ud68c\uc804 RPE\ub294 \ubcc4\ub3c4 CSV/JSON\uc5d0 \ubcf4\uc874\ud55c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000400_000500_fb_ablation.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000400_000500/stages.npz",
+      "artifacts/odometry/000400_000500/frames.csv"
+    ],
+    "caption_ko": "FB \uac8c\uc774\ud2b8 \uc678 \ub3d9\uc77c \uc124\uc815. RANSAC \uc785\ub825 \uc9d1\ud569 \ubcc0\ud654\ub85c \uacb0\uacfc\uac00 \ub2ec\ub77c\uc9c4\ub2e4. \uc778\uacfc\uc801 \uc77c\ubc18\ud654\ub098 \uc131\ub2a5 \uac1c\uc120 \ubcf4\uc7a5\uc740 \uc544\ub2c8\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/000400_000500_worst_frame.png",
+    "kind": "actual KITTI",
+    "sources": [
+      "artifacts/evaluation/000400_000500/stages.npz",
+      "artifacts/odometry/000400_000500/frames.csv",
+      "artifacts/odometry/000400_000500/000461.npz",
+      "data/kitti/dataset/sequences/00/image_0/000461.png"
+    ],
+    "caption_ko": "\ud3c9\uac00\uc5d0\uc11c \ucd5c\ub300 RPE \ud504\ub808\uc784\uc744 \uc0ac\ud6c4 \uc120\ud0dd\ud55c \uc9c4\ub2e8. \ub3d9\uc801 \uac1d\uccb4\u00b7\uac00\ub9bc \uc5ec\ubd80\ub294 GT mask\uac00 \uc5c6\uc5b4 \ud655\uc815\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/synthetic_depth_uncertainty.png",
+    "kind": "synthetic",
+    "sources": [
+      "artifacts/synthetic/uncertainty.npz"
+    ],
+    "caption_ko": "\ud569\uc131 disparity Gaussian sigma=0.5px. \uc6d0\uac70\ub9ac\uc5d0\uc11c \ube44\uc120\ud615 \ubcc0\ud658 \ub54c\ubb38\uc5d0 1\ucc28 \uadfc\uc0ac\uc640 Monte Carlo\uac00 \ub2ec\ub77c\uc9c4\ub2e4. KITTI \uc624\ucc28 \ucd94\uc815\uc774 \uc544\ub2c8\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/synthetic_lens_distortion.png",
+    "kind": "synthetic",
+    "sources": [
+      "artifacts/synthetic/distortion.npz"
+    ],
+    "caption_ko": "\ub80c\uc988 \uacc4\uc218\ub294 \uc124\uba85\uc6a9\uc73c\ub85c \ub9cc\ub4e0 \uac12\uc774\ub2e4. \uc774\ubbf8 \uc815\ub958\ub41c KITTI \uc601\uc0c1\uc5d0 \uc774 \uacc4\uc218\ub97c \uc801\uc6a9\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/synthetic_distortion_radius.png",
+    "kind": "synthetic",
+    "sources": [
+      "artifacts/synthetic/distortion.npz"
+    ],
+    "caption_ko": "\uc54c\ub824\uc9c4 \uc65c\uace1 \ubaa8\ub378\uc758 \uc5ed\ubcc0\ud658\uc740 \uc2e4\uc81c \ubcf4\uc815 \ud30c\ub77c\ubbf8\ud130 \ucd94\uc815\uacfc \ub2e4\ub974\ub2e4. undistortion \uc218\uce58 \uc624\ucc28\ub294 summary\uc5d0 \uae30\ub85d\ud55c\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  },
+  {
+    "file": "figures/synthetic_degeneracy.png",
+    "kind": "synthetic",
+    "sources": [
+      "artifacts/synthetic/degeneracy.csv",
+      "artifacts/synthetic/degeneracy.npz"
+    ],
+    "caption_ko": "\uc21c\uc218 \ud68c\uc804\u00b7\uc791\uc740 \uc774\ub3d9\u00b7\uba3c \uc810\u00b7\ud3c9\uba74\uc5d0\uc11c accepted\ub9cc\uc73c\ub85c \uc774\ub3d9 \ubc29\ud5a5\uc758 \uc2e0\ub8b0\uc131\uc744 \ubcf4\uc7a5\ud558\uc9c0 \uc54a\ub294\ub2e4. PnP\uc5d0\ub294 \ud569\uc131 exact 3D\ub97c \uc8fc\ubbc0\ub85c \uacf5\uc815\ud55c stereo \ube44\uad50\uac00 \uc544\ub2c8\ub2e4.",
+    "width_inches": 7,
+    "dpi": 220
+  }
+]

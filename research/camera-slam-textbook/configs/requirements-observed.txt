@@ -1,0 +1,6 @@
+# Observed interpreter; exact installed distribution names/versions in provenance/manifest.json.
+numpy==2.4.6
+scipy==1.17.1
+matplotlib==3.11.1
+opencv-python==5.0.0.93
+# cv2.__version__ == 5.0.0; build details in artifacts/provenance/opencv_build.txt.
