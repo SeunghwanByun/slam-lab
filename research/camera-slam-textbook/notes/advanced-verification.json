@@ -1,0 +1,860 @@
+{
+  "schema_version": 1,
+  "scope": "Educational equation and numeric checks only; no algorithm validation.",
+  "limitations": [
+    "No dataset, sensor, finite-difference Jacobian, SLAM, VIO, neural model or benchmark run.",
+    "Numerical agreement does not establish physical assumptions or observability.",
+    "Examples are transcribed from notes; this is not an automatic audit of all prose.",
+    "Conceptual exercises 5, 18, 19, 20 are not tested; exercise 6 checks its score only."
+  ],
+  "reproduce_from_repository_root": "python3 research/camera-slam-textbook/notes/advanced-verification.py",
+  "dependencies": "Python 3 standard library only",
+  "python_version": "3.11.14",
+  "script_sha256": "1859b976d6380f2820a185b3b58a0b7480772b00709e325f8fd8101dfa2dd1eb",
+  "notes_sha256_at_run": "4bbae9fdd28d3b46a74a0334491c4393a75d6f5e69db616da7a18924f0617b39",
+  "absolute_tolerance": 1e-12,
+  "relative_tolerance": 1e-12,
+  "comparator_negative_controls_passed": true,
+  "summary": {
+    "total": 32,
+    "passed": 32,
+    "failed": 0
+  },
+  "all_numeric_checks_passed": true,
+  "checks": [
+    {
+      "id": "parallax_small_angle",
+      "notes_reference": "1.2",
+      "inputs": {
+        "baseline_m": 0.1,
+        "depth_m": [
+          5,
+          50
+        ]
+      },
+      "equation": "angle ~= baseline/depth (small-angle model)",
+      "actual": [
+        0.02,
+        0.002
+      ],
+      "expected": [
+        0.02,
+        0.002
+      ],
+      "output_units": "rad",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "projection_jacobian",
+      "notes_reference": "1.6",
+      "inputs": {
+        "point_m": [
+          1.0,
+          2.0,
+          5.0
+        ],
+        "f_px": 500.0
+      },
+      "equation": "J_pi = [[f/Z,0,-f*X/Z^2],[0,f/Z,-f*Y/Z^2]]",
+      "actual": [
+        [
+          100.0,
+          0,
+          -20.0
+        ],
+        [
+          0,
+          100.0,
+          -40.0
+        ]
+      ],
+      "expected": [
+        [
+          100,
+          0,
+          -20
+        ],
+        [
+          0,
+          100,
+          -40
+        ]
+      ],
+      "output_units": "px/m",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "pose_jacobian_product",
+      "notes_reference": "1.6",
+      "inputs": {
+        "J_pi": [
+          [
+            100.0,
+            0,
+            -20.0
+          ],
+          [
+            0,
+            100.0,
+            -40.0
+          ]
+        ],
+        "dp_dxi": [
+          [
+            1,
+            0,
+            0,
+            0,
+            5.0,
+            -2.0
+          ],
+          [
+            0,
+            1,
+            0,
+            -5.0,
+            0,
+            1.0
+          ],
+          [
+            0,
+            0,
+            1,
+            2.0,
+            -1.0,
+            0
+          ]
+        ]
+      },
+      "equation": "J_pose = J_pi [I | -[p]_x]",
+      "actual": [
+        [
+          100.0,
+          0.0,
+          -20.0,
+          -40.0,
+          520.0,
+          -200.0
+        ],
+        [
+          0.0,
+          100.0,
+          -40.0,
+          -580.0,
+          40.0,
+          100.0
+        ]
+      ],
+      "expected": [
+        [
+          100,
+          0,
+          -20,
+          -40,
+          520,
+          -200
+        ],
+        [
+          0,
+          100,
+          -40,
+          -580,
+          40,
+          100
+        ]
+      ],
+      "output_units": "columns 0..2: px/m; columns 3..5: px/rad",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "translation_1cm",
+      "notes_reference": "1.6",
+      "inputs": {
+        "column": 0,
+        "step": 0.01
+      },
+      "equation": "first-order pixel change = J_pose[:,column]*step",
+      "actual": [
+        1.0,
+        0.0
+      ],
+      "expected": [
+        1,
+        0
+      ],
+      "output_units": "px",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "rotation_1mrad",
+      "notes_reference": "1.6",
+      "inputs": {
+        "column": 5,
+        "step": 0.001
+      },
+      "equation": "first-order pixel change = J_pose[:,column]*step",
+      "actual": [
+        -0.2,
+        0.1
+      ],
+      "expected": [
+        -0.2,
+        0.1
+      ],
+      "output_units": "px",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "translation_2cm",
+      "notes_reference": "exercise 1",
+      "inputs": {
+        "column": 0,
+        "step": 0.02
+      },
+      "equation": "first-order pixel change = J_pose[:,column]*step",
+      "actual": [
+        2.0,
+        0.0
+      ],
+      "expected": [
+        2,
+        0
+      ],
+      "output_units": "px",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "rotation_2mrad",
+      "notes_reference": "exercise 2",
+      "inputs": {
+        "column": 5,
+        "step": 0.002
+      },
+      "equation": "first-order pixel change = J_pose[:,column]*step",
+      "actual": [
+        -0.4,
+        0.2
+      ],
+      "expected": [
+        -0.4,
+        0.2
+      ],
+      "output_units": "px",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "whitening",
+      "notes_reference": "exercise 3",
+      "inputs": {
+        "residual_px": [
+          6,
+          8
+        ],
+        "sigma_px": 2
+      },
+      "equation": "r_bar=r/sigma; q=norm(r_bar)",
+      "actual": [
+        3.0,
+        4.0,
+        5.0
+      ],
+      "expected": [
+        3,
+        4,
+        5
+      ],
+      "output_units": "dimensionless",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "huber_q_10",
+      "notes_reference": "1.7",
+      "inputs": {
+        "q": 10,
+        "delta": 2
+      },
+      "equation": "[weight=delta/q, Huber=delta*(q-delta/2), quadratic=q^2/2]",
+      "actual": [
+        0.2,
+        18.0,
+        50.0
+      ],
+      "expected": [
+        0.2,
+        18,
+        50
+      ],
+      "output_units": "dimensionless",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "huber_q_5",
+      "notes_reference": "exercise 3",
+      "inputs": {
+        "q": 5,
+        "delta": 2
+      },
+      "equation": "[weight=delta/q, Huber=delta*(q-delta/2), quadratic=q^2/2]",
+      "actual": [
+        0.4,
+        8.0,
+        12.5
+      ],
+      "expected": [
+        0.4,
+        8,
+        12.5
+      ],
+      "output_units": "dimensionless",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "schur_solution",
+      "notes_reference": "1.8; exercise 4",
+      "inputs": {
+        "U": 6,
+        "W_cp": 2,
+        "V": 4,
+        "g_c": -8,
+        "g_p": -4
+      },
+      "equation": "S=U-W_cp^2/V; rhs=-g_c+W_cp*g_p/V; solve then back-substitute",
+      "actual": [
+        5.0,
+        6.0,
+        1.2,
+        0.4
+      ],
+      "expected": [
+        5,
+        6,
+        1.2,
+        0.4
+      ],
+      "output_units": "dimensionless",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "schur_original_equations",
+      "notes_reference": "1.8; exercise 4",
+      "inputs": {
+        "delta": [
+          1.2,
+          0.4
+        ]
+      },
+      "equation": "H*delta+g",
+      "actual": [
+        -8.881784197001252e-16,
+        0.0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "output_units": "dimensionless",
+      "max_absolute_error": 8.881784197001252e-16,
+      "passed": true
+    },
+    {
+      "id": "marginal_prior",
+      "notes_reference": "1.10; exercise 7",
+      "inputs": {
+        "H": [
+          [
+            2,
+            -1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "g": [
+          1,
+          -1
+        ]
+      },
+      "equation": "Schur prior; optimum=-g_prior/H_prior; variance=1/H_prior",
+      "actual": [
+        0.5,
+        -0.5,
+        1.0,
+        2.0
+      ],
+      "expected": [
+        0.5,
+        -0.5,
+        1,
+        2
+      ],
+      "output_units": "dimensionless",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "bow_score",
+      "notes_reference": "1.13; exercise 6",
+      "inputs": {
+        "a": [
+          0.6,
+          0.3,
+          0.1
+        ],
+        "b": [
+          0.5,
+          0.2,
+          0.3
+        ]
+      },
+      "equation": "[L1(a-b), 1-L1(a-b)/2]",
+      "actual": [
+        0.3999999999999999,
+        0.8
+      ],
+      "expected": [
+        0.4,
+        0.8
+      ],
+      "output_units": "dimensionless; score is not loop probability",
+      "max_absolute_error": 1.1102230246251565e-16,
+      "passed": true
+    },
+    {
+      "id": "sim3_identity_rotation",
+      "notes_reference": "1.15",
+      "inputs": {
+        "p": [
+          1,
+          1,
+          1
+        ],
+        "t": [
+          1,
+          0,
+          0
+        ],
+        "s": 2
+      },
+      "equation": "p'=s*p+t; p=(p'-t)/s for R=I",
+      "actual": [
+        [
+          3,
+          2,
+          2
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "expected": [
+        [
+          3,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "output_units": "arbitrary consistent length units",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "photometric_affine",
+      "notes_reference": "2.2",
+      "inputs": {
+        "I_i": 100,
+        "I_j": 120,
+        "b_j": 20,
+        "alpha": 1,
+        "b_i": 0
+      },
+      "equation": "[(I_j-b_j)-(I_i-b_i), I_j-I_i]",
+      "actual": [
+        0,
+        20
+      ],
+      "expected": [
+        0,
+        20
+      ],
+      "output_units": "intensity",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "photometric_gradient",
+      "notes_reference": "2.3; exercise 8",
+      "inputs": {
+        "gradient": [
+          4,
+          0
+        ],
+        "warp_px": [
+          0.5,
+          2
+        ]
+      },
+      "equation": "dot(gradient,warp)",
+      "actual": 2.0,
+      "expected": 2,
+      "output_units": "intensity",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "nullspace_dimension",
+      "notes_reference": "2.6; exercise 9",
+      "inputs": {
+        "views": 5,
+        "feature_rank": 3
+      },
+      "equation": "2*views-feature_rank (rank assumed, not measured)",
+      "actual": 7,
+      "expected": 7,
+      "output_units": "residual dimensions, not pose observability rank",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "constant_acceleration_1d",
+      "notes_reference": "2.8; exercise 10",
+      "inputs": {
+        "dt_s": 0.2,
+        "a_m_s2": 2,
+        "bias_m_s2": 0.1,
+        "initial_velocity": 0
+      },
+      "equation": "[a*dt, 0.5*a*dt^2, 0.5*bias*dt^2]",
+      "actual": [
+        0.4,
+        0.04000000000000001,
+        0.0020000000000000005
+      ],
+      "expected": [
+        0.4,
+        0.04,
+        0.002
+      ],
+      "output_units": "[m/s,m,m]; gravity already removed",
+      "max_absolute_error": 6.938893903907228e-18,
+      "passed": true
+    },
+    {
+      "id": "initialization_scale_1d",
+      "notes_reference": "2.9",
+      "inputs": {
+        "visual_displacement": 0.5,
+        "dt_s": 1,
+        "preintegrated_displacement_m": 1
+      },
+      "equation": "[scale for known v=0, residual for (s,v)=(2,0), residual for (4,1)]",
+      "actual": [
+        2.0,
+        0.0,
+        0.0
+      ],
+      "expected": [
+        2,
+        0,
+        0
+      ],
+      "output_units": "[m/visual_unit,m,m]; no initialization algorithm tested",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "time_offset",
+      "notes_reference": "2.10",
+      "inputs": {
+        "pixel_velocity_px_s": [
+          80,
+          -20
+        ],
+        "offset_s": 0.01
+      },
+      "equation": "pixel_velocity*offset",
+      "actual": [
+        0.8,
+        -0.2
+      ],
+      "expected": [
+        0.8,
+        -0.2
+      ],
+      "output_units": "px",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "time_offset_bound",
+      "notes_reference": "2.10",
+      "inputs": {
+        "pixel_velocity_px_s": [
+          80,
+          -20
+        ],
+        "error_budget_px": 0.5
+      },
+      "equation": "budget/norm(pixel_velocity)",
+      "actual": 0.006063390625908324,
+      "expected": 0.006063390625908324,
+      "output_units": "s",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "tsdf_weighted_mean",
+      "notes_reference": "2.14; exercise 11",
+      "inputs": {
+        "F_old": 0.5,
+        "W_old": 2,
+        "f_obs": -0.25,
+        "w_obs": 1,
+        "mu_m": 0.1
+      },
+      "equation": "[weighted_mean, total_weight, mean*mu]",
+      "actual": [
+        0.25,
+        3,
+        0.025
+      ],
+      "expected": [
+        0.25,
+        3,
+        0.025
+      ],
+      "output_units": "[normalized_TSDF,weight,m]; not ESDF",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "zero_crossing",
+      "notes_reference": "2.15",
+      "inputs": {
+        "x_m": [
+          0,
+          0.1
+        ],
+        "F": [
+          0.2,
+          -0.3
+        ]
+      },
+      "equation": "x0+(x1-x0)*F0/(F0-F1)",
+      "actual": 0.04000000000000001,
+      "expected": 0.04,
+      "output_units": "m",
+      "max_absolute_error": 6.938893903907228e-18,
+      "passed": true
+    },
+    {
+      "id": "occupancy_two_hits",
+      "notes_reference": "2.16; exercise 12",
+      "inputs": {
+        "prior": 0.5,
+        "hit": 0.7,
+        "independent_hits": 2
+      },
+      "equation": "sigmoid(2*logit(0.7))",
+      "actual": 0.8448275862068966,
+      "expected": 0.8448275862068966,
+      "output_units": "probability under independence assumption",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "clearance",
+      "notes_reference": "2.17; exercise 13",
+      "inputs": {
+        "distance_m": 0.35,
+        "radius_m": 0.3,
+        "margin_m": 0.1
+      },
+      "equation": "distance-radius-margin",
+      "actual": -0.05000000000000002,
+      "expected": -0.05,
+      "output_units": "m; not a safety certification",
+      "max_absolute_error": 1.3877787807814457e-17,
+      "passed": true
+    },
+    {
+      "id": "depth_backprojection_x",
+      "notes_reference": "2.12; exercise 14",
+      "inputs": {
+        "u_px": 420,
+        "cx_px": 320,
+        "fx_px": 500,
+        "Z_m": 2
+      },
+      "equation": "X=(u-cx)*Z/fx",
+      "actual": 0.4,
+      "expected": 0.4,
+      "output_units": "m; optical-axis depth assumed",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "assignment_sums",
+      "notes_reference": "3.3",
+      "inputs": {
+        "scores": [
+          [
+            0.9,
+            0.8
+          ],
+          [
+            0.89,
+            0.1
+          ]
+        ]
+      },
+      "equation": "[diagonal_sum, off_diagonal_sum]",
+      "actual": [
+        1.0,
+        1.69
+      ],
+      "expected": [
+        1,
+        1.69
+      ],
+      "output_units": "scores; not a SuperGlue implementation",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "semantic_independent_fusion",
+      "notes_reference": "3.12",
+      "inputs": {
+        "prior": [
+          0.5,
+          0.5
+        ],
+        "observation": [
+          0.8,
+          0.2
+        ],
+        "count": 2
+      },
+      "equation": "normalize(prior*observation^2)",
+      "actual": [
+        0.9411764705882353,
+        0.058823529411764705
+      ],
+      "expected": [
+        0.9411764705882353,
+        0.058823529411764705
+      ],
+      "output_units": "probability",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "resize_coordinates",
+      "notes_reference": "exercise 15",
+      "inputs": {
+        "fx": 800,
+        "cx": 640,
+        "u": 1000,
+        "scale": 0.5
+      },
+      "equation": "[fx,cx,u]*scale (simple coordinate scaling convention)",
+      "actual": [
+        400.0,
+        320.0,
+        500.0
+      ],
+      "expected": [
+        400,
+        320,
+        500
+      ],
+      "output_units": "px",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "score_matrix_storage",
+      "notes_reference": "3.9; exercise 16",
+      "inputs": {
+        "rows": 2048,
+        "columns": 2048,
+        "bytes_per_element": 4
+      },
+      "equation": "[rows*columns, elements*4, bytes/2^20]",
+      "actual": [
+        4194304,
+        16777216,
+        16.0
+      ],
+      "expected": [
+        4194304,
+        16777216,
+        16
+      ],
+      "output_units": "[elements,bytes,MiB]; not measured total VRAM",
+      "max_absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "id": "gaussian_alpha_compositing",
+      "notes_reference": "exercise 17",
+      "inputs": {
+        "alpha": [
+          0.5,
+          0.4
+        ],
+        "colors": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "background": [
+          0,
+          0,
+          0
+        ]
+      },
+      "equation": "[red contribution, green, blue contribution, remaining transmittance]",
+      "actual": [
+        0.5,
+        0,
+        0.2,
+        0.3
+      ],
+      "expected": [
+        0.5,
+        0,
+        0.2,
+        0.3
+      ],
+      "output_units": "normalized color and transmittance; not geometry validation",
+      "max_absolute_error": 0.0,
+      "passed": true
+    }
+  ]
+}
