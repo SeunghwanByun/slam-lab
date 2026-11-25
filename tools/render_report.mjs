@@ -36,6 +36,17 @@ try{
  await page.goto(pathToFileURL(htmlPath).href);
  await page.addScriptTag({path:path.join(deps,'mermaid/dist/mermaid.min.js')});
  await page.evaluate(async()=>{mermaid.initialize({startOnLoad:false,theme:'neutral'});await mermaid.run();await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode()));});
+ // Standalone anchor paragraphs can spill onto a blank page before a forced heading break.
+ await page.evaluate(()=>{
+  for(const anchor of document.querySelectorAll('p > a[id]:only-child')){
+   const paragraph=anchor.parentElement;
+   const heading=paragraph.nextElementSibling;
+   if(!paragraph.textContent.trim() && heading?.matches('h1,h2,h3,h4,h5,h6') && !heading.id){
+    heading.id=anchor.id;
+    paragraph.remove();
+   }
+  }
+ });
  const diagrams=await page.locator('.mermaid svg').count();
  if(diagrams!==expectedDiagrams)throw Error(`Diagrams: ${diagrams}/${expectedDiagrams}`);
  const invalidAnchors=await page.evaluate(()=>[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(decodeURIComponent(a.hash.slice(1)))).map(a=>a.hash));
