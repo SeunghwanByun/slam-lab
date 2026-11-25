@@ -1,0 +1,23 @@
+{
+  "seed": 2306,
+  "width": 800,
+  "frame0": "data/kitti/dataset/sequences/00/image_0/000000.png",
+  "frame1": "data/kitti/dataset/sequences/00/image_0/000001.png",
+  "features": 1200,
+  "geometry_threshold_px": 3.0,
+  "ratios": [0.5, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95],
+  "dpi": 190,
+  "warp_cases": [
+    {"name": "rotate25", "angle": 25, "scale": 1.0, "blur": 0},
+    {"name": "scale075", "angle": 0, "scale": 0.75, "blur": 0},
+    {"name": "scale125", "angle": 0, "scale": 1.25, "blur": 0},
+    {"name": "blur3", "angle": 25, "scale": 1.0, "blur": 3}
+  ],
+  "flow_translations_px": [2, 8, 24],
+  "flow_levels": [0, 3],
+  "lk_window": 21,
+  "lk_iterations": 40,
+  "lk_epsilon": 0.001,
+  "farneback": {"pyr_scale": 0.5, "levels": 4, "winsize": 25,
+    "iterations": 5, "poly_n": 7, "poly_sigma": 1.5, "flags": 0}
+}
