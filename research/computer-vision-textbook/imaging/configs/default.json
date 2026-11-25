@@ -1,0 +1,17 @@
+{
+  "seed": 20261125,
+  "image_left": "data/kitti/dataset/sequences/00/image_0/000000.png",
+  "image_right": "data/kitti/dataset/sequences/00/image_1/000000.png",
+  "roi_xywh": [400, 80, 400, 240],
+  "dpi": 200,
+  "noise_sigma_dn": 15.0,
+  "impulse_probability": 0.08,
+  "gaussian_sigma_px": 1.2,
+  "bilateral_sigma_color_dn": 30.0,
+  "bilateral_sigma_space_px": 3.0,
+  "sensor_means_e": [1, 4, 16, 64, 256, 1024],
+  "sensor_read_sigma_e": 3.0,
+  "sensor_trials": 100000,
+  "canny_low_dn_per_px": 8.0,
+  "canny_high_dn_per_px": 20.0
+}
