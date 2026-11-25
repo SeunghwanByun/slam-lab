@@ -1,0 +1,14 @@
+{
+  "seed": 20261125,
+  "dpi": 200,
+  "figure_width_inches": 7,
+  "trials": 600,
+  "steps": 60,
+  "dt_seconds": 1.0,
+  "acceleration_sigma": 0.15,
+  "position_sigma": 0.7,
+  "underreported_R_factor": 0.04,
+  "correlation": 0.9,
+  "correlation_trials": 30000,
+  "synthetic_only": true
+}
