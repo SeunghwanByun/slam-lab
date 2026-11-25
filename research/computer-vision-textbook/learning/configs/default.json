@@ -1,0 +1,9 @@
+{
+  "seed": 1729,
+  "samples": 600,
+  "steps": 500,
+  "learning_rate": 0.1,
+  "dpi": 190,
+  "image": "data/kitti/dataset/sequences/00/image_0/000000.png",
+  "experiment_kind": "educational_numpy_toy_not_pretrained"
+}
