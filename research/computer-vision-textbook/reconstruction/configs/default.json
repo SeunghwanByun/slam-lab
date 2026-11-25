@@ -1,0 +1,12 @@
+{
+  "seed": 21024,
+  "dpi": 190,
+  "figure_width_inches": 7,
+  "tsdf_truncation_m": 0.12,
+  "stereo_num_disparities": 128,
+  "stereo_block_size": 5,
+  "stereo_max_depth_m": 45,
+  "imu_dt_s": 0.1,
+  "queue_period_ms": 33.3333333333,
+  "note": "Educational synthetic experiments except KITTI 00 stereo frame 000000; no trained models or full SLAM"
+}

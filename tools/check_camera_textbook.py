@@ -17,6 +17,8 @@ import pypdfium2 as pdfium
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = re.compile(r"문서\s*버전\s*:\s*(v\d+\.\d+\.\d+)")
+CHAPTER_ID = r"(?:[1-9]|1[0-9]|2[0-4])(?!\d)"
+DEFAULT_CHAPTER_PATTERN = rf"(?i)(?<![A-Za-z0-9])[CD]{CHAPTER_ID}|camera|카메라.*(?:교재|파트|부)|(?:교재|파트|부).*카메라"
 
 
 class References(HTMLParser):
@@ -40,15 +42,57 @@ def compact(text):
     return re.sub(r"\s+", "", text)
 
 
+def positive_int(value):
+    number = int(value)
+    if number < 1:
+        raise argparse.ArgumentTypeError("must be a positive integer")
+    return number
+
+
+def minimum_pages(min_pages=None, require_100_pages=False):
+    return max(min_pages or 0, 100 if require_100_pages else 0)
+
+
+def source_coverage(source_bytes, tokens, references, source_path):
+    """Count H2 chapter IDs and rendered image references, not mentions in prose."""
+    chapter_ids = []
+    pattern = re.compile(rf"^D({CHAPTER_ID})(?=[.\s:]|$)", re.IGNORECASE)
+    for i, token in enumerate(tokens[:-1]):
+        if token.type == "heading_open" and token.tag == "h2":
+            match = pattern.match(tokens[i + 1].content.strip())
+            if match:
+                chapter_ids.append(int(match.group(1)))
+    image_ids = []
+    for tag, href in references:
+        if tag != "img":
+            continue
+        url = urlsplit(href)
+        image_ids.append(href if url.scheme or url.netloc else
+                         str((source_path.parent / unquote(url.path)).resolve()))
+    return {
+        "source_bytes": len(source_bytes),
+        "source_lines": len(source_bytes.decode("utf-8").splitlines()),
+        "new_d_chapter_count": len(set(chapter_ids)),
+        "new_d_chapter_ids": [f"D{i}" for i in sorted(set(chapter_ids))],
+        "duplicate_d_chapter_ids": [f"D{i}" for i in sorted(set(chapter_ids)) if chapter_ids.count(i) > 1],
+        "missing_d_chapter_ids": [f"D{i}" for i in range(1, 25) if i not in chapter_ids],
+        "image_occurrences": len(image_ids),
+        "image_unique": len(set(image_ids)),
+        "note": "Raw UTF-8 source bytes are not a prose-quality measure; image counts include external references, which are not fetched.",
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, default=ROOT / "docs/report.md")
     parser.add_argument("--pdf", type=Path, default=ROOT / "docs/report.pdf")
-    parser.add_argument("--output", type=Path, default=ROOT / "research/camera-slam-textbook/artifacts/pdf-check")
+    parser.add_argument("--output", type=Path, default=ROOT / "research/computer-vision-textbook/artifacts/pdf-check")
     parser.add_argument("--require-100-pages", action="store_true")
+    parser.add_argument("--min-pages", type=positive_int, help="Minimum PDF pages; combined with --require-100-pages using the larger minimum")
+    parser.add_argument("--source-coverage", action="store_true", help="Include D1-D24 H2 coverage, image occurrence/unique counts, and raw source bytes")
     parser.add_argument("--require-navigation", action="store_true", help="Require PDF bookmarks and tagged structure")
     parser.add_argument("--expected-version", help="Also require this exact source version, e.g. v3.0.0")
-    parser.add_argument("--chapter-pattern", default=r"(?i)(?<![A-Za-z0-9])C\d+(?!\d)|camera|카메라.*(?:교재|파트|부)|(?:교재|파트|부).*카메라")
+    parser.add_argument("--chapter-pattern", default=DEFAULT_CHAPTER_PATTERN)
     parser.add_argument("--pages", default="", help="Additional 1-based high-resolution pages, comma separated")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
@@ -92,8 +136,9 @@ def main():
     pdf_bytes = args.pdf.read_bytes()
     pdf = pdfium.PdfDocument(pdf_bytes)
     count = len(pdf)
-    if args.require_100_pages and count < 100:
-        errors.append(f"Page count {count} < 100")
+    required_pages = minimum_pages(args.min_pages, args.require_100_pages)
+    if count < required_pages:
+        errors.append(f"Page count {count} < {required_pages}")
     if not count:
         errors.append("Empty PDF")
     selected = {1, count}
@@ -168,6 +213,7 @@ def main():
         "source_sha256": hashlib.sha256(source_bytes).hexdigest(),
         "pdf_sha256": hashlib.sha256(pdf_bytes).hexdigest(), "version": version,
         "pages": count, "require_100_pages": args.require_100_pages,
+        "min_pages": args.min_pages, "effective_min_pages": required_pages,
         "local_images": images, "references_checked": len(refs.refs),
         "external_references_not_fetched": sorted(set(external)),
         "bookmarks": bookmarks, "tagged": tagged, "chapter_pages": chapter_pages,
@@ -175,8 +221,13 @@ def main():
         "page_checks": page_records, "errors": errors, "warnings": warnings,
         "visual_review": "Required: inspect all contact sheets and high-resolution pages; automated checks do not detect all clipping, overlap or Korean glyph problems.",
     }
+    if args.source_coverage:
+        report["source_coverage"] = source_coverage(source_bytes, tokens, refs.refs, args.source)
     (args.output / "validation.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({k: report[k] for k in ("ok", "version", "pages", "local_images", "errors", "warnings")}, ensure_ascii=False))
+    summary = {k: report[k] for k in ("ok", "version", "pages", "effective_min_pages", "local_images", "errors", "warnings")}
+    if args.source_coverage:
+        summary["source_coverage"] = report["source_coverage"]
+    print(json.dumps(summary, ensure_ascii=False))
     return 0 if report["ok"] else 1
 
 
