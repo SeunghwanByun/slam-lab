@@ -1,0 +1,10 @@
+{
+  "seed": 13141516,
+  "dpi": 200,
+  "focal_px": 700.0,
+  "baseline_m": 0.54,
+  "noise_px": 0.5,
+  "points": 120,
+  "stereo_disparities": 96,
+  "stereo_block": 5
+}
