@@ -83,3 +83,39 @@ coverage fixture는 다음 원본을 MarkdownIt commonmark(html=True)로 parse/r
 이번 결과는 검사기 변경의 회귀/fixture 검사다. 24장 통합, 384쪽 이상, 실질 원고 868320 bytes 이상, 신규48그림/72풀이, 통합 PDF 전체 시각 검토는 다른 게이트이며 아직 완료라고 선언하지 않는다. 새 글꼴·페이지 padding·여백 변경은 없다. 생성한 contact sheet만으로 glyph·잘림·겹침 검토를 승인하지 않는다. 통합 후에는 버전과 분량을 새 정본으로 다시 검사해야 한다.
 
 최종 상태: 12개 회귀 시험, 실제 PDF 성공/의도적 실패/legacy 호환 3회, invalid 인자 거부 1회 완료. 세 validation JSON의 source/PDF hash가 모두 같고, baseline 192페이지 기록·16 contact sheet·선택 key 생략·의도한 단일 오류를 포함한 artifact 일관성 assertion 7개도 통과했다. 변경 파일의 `git diff --check`는 오류가 없었다.
+
+## 최종 v4.0.0 PDF v2 검사와 145–300쪽 시각 검토
+
+2026-11-25 추가 기록. 위 192쪽 fixture 시험과 이 최종 검사를 구분한다. 최초 455쪽 렌더에서는 standalone anchor paragraph 때문에 빈 페이지가 생겨 검토를 중단했다. 주 담당자가 anchor를 다음 heading의 id로 옮기는 renderer 수정을 적용하고 커밋 `b05400c`를 통보했다. 최종 검사 대상은 453쪽 수정본이며, 이전 `pdf-final-check`의 페이지 번호나 검토 결과를 그대로 승계하지 않는다.
+
+검사 산출물 경로는 `research/computer-vision-textbook/artifacts/pdf-final-check-v2/`다. 다음은 같은 검사 조건을 재현하는 명령이다. 이번 분담 검토자는 검사기를 다시 돌리지 않고 주 담당자가 생성한 `validation.json`과 PNG/JPG를 읽었다.
+
+```text
+research/20261031_vo-lo-study/.venv/bin/python tools/check_camera_textbook.py --min-pages 384 --source-coverage --require-navigation --expected-version v4.0.0 --output research/computer-vision-textbook/artifacts/pdf-final-check-v2
+```
+
+JSON 직접 확인 결과: `ok=true`, v4.0.0, 453쪽, effective minimum 384, 원본 1186817 UTF-8 bytes/18042행, 고유 D장 24개(누락/중복 없음), 이미지 172회/고유171개, bookmarks721개, tagged=true, errors/warnings 모두 빈 배열, contact sheet38개다. raw byte 기준과 페이지 하한은 통과했으나 bytes 자체가 산문 품질을 증명한다는 뜻은 아니다.
+
+```text
+source SHA256:
+fffc6e7d95ddf7de40e0dd268b3c89bb79f08e24acf57f784be938743b956524
+PDF SHA256:
+2287619cb307287af60f0ec29f12d7cac76bbf194bbaa1e1867c3dd51c077af5
+```
+
+**이 분담자의 직접 시각 검토 범위:** `view_image`로 v2의 `contact-013.jpg`부터 `contact-025.jpg`까지 13개를 빠짐없이 열어 145–300쪽 전체 156페이지를 확인했다. 이어 `page-162.png`, `172`, `182`, `192`, `210`, `219`, `228`, `243`, `244`, `247`, `259`, `269`, `280`, `298`의 고해상도 14페이지를 직접 열었다. 이 목록의 생략된 숫자는 모두 같은 경로의 `page-NNN.png`다. 텍스트 추출만으로 시각 검토를 대체하지 않았다.
+
+- D1–D4 시작 페이지의 단위표·문단·수식과 수정 후192쪽 D4 정상 시작을 확인했다.
+- D5 조건수 그림(210), D6 최적화 경로(219), D7 상관 분포(228), D8 NIS/NEES 그림·결과표(243), Mahalanobis gate와 캡션(244)을 확대 확인했다.
+- D9–D12 시작 페이지(247/259/269/280)의 표·기호·코드 블록과 contact sheet상의 특징점·피라미드·대응·정합·광류 그림/캡션 배치를 확인했다. 298쪽 사영 격자와 캡션도 확대 확인했다.
+- **발견 사항:** 담당 범위에서 출판을 막는 중대한 페이지 경계 잘림, 본문/표/그림 겹침, 그림과 캡션의 페이지 분리, 한글 glyph 손상을 발견하지 못했다. 장말의 여백과 다음 페이지로 이어지는 문장/수식은 보이나 내용 소실로 판정할 증거는 없었다.
+
+**다른 분담의 상태:** 주 담당자는 1–144쪽 contact-001–012 전체와 고해상도1/96쪽에 문제가 없다고 통보했다(이 분담자가 대신 확인했다고 주장하지 않음). 301–453쪽의 별도 검토 결과는 이 기록 작성 시점에 수신하지 않아 **대기**로 남긴다. 전체 출판 승인은 주 담당자가 세 범위를 합쳐 확정한다. 이번 추가 작업은 이 QA 노트만 수정했으며 canonical Markdown/PDF, renderer, 확정 연구 원고와 다른 작업자의 파일은 변경하지 않았다.
+
+## 최종 통합 승인
+
+위 대기 상태 이후 301–453쪽 검토가 완료되었다. 해당 검토자는 contact-026–038 전체 13장과 고해상도 304, 306, 313, 322, 330, 342, 347, 350, 357, 358, 365, 372, 373, 375, 385, 394, 403, 453쪽을 확인했으며 중대한 잘림·겹침·고립 캡션을 발견하지 못했다. 세 범위를 합쳐 453쪽 전체의 contact sheet 38장과 선택 고해상도 34쪽을 시각 검토했다. 이는 모든 문장과 수치의 무오류 인증이 아니라 출판 배치 검토다.
+
+정본은 기존 192쪽 대비 453쪽(2.3594배), UTF-8 원본 434160 bytes 대비 1186817 bytes(2.7336배)다. 글꼴 크기나 여백을 늘리지 않았다. 신규 D24장, 그림79개, 완전 풀이106문제와 여섯 파트 수치시험180개를 추가했다. 신규 그림79개는 Git에 포함했고 데이터/venv/중간 artifacts는 포함하지 않았다. 기존 운영 VO/LO 코드는 변경하지 않았다. 정본과 PDF는 위 SHA256의 검사본이며 단일 최신 경로를 유지한다.
+
+최종 재현 순서는 저장소 루트에서 `node tools/render_report.mjs`, 위 `check_camera_textbook.py` 명령, 각 파트 handoff 또는 정본에 수록된 실험·검사 명령이다. 렌더러 수정은 빈 anchor 문단의 id를 다음 제목으로 옮겨 공백 페이지를 없앴으며, 내부 링크 검사와 721개 책갈피 검사를 통과했다. `git diff --check`도 통과했다. 연구 결과와 출판물의 재현 범위를 승인하며, 추가 알고리즘 개선·실제 SLAM/VIO 통합은 수행하지 않고 사용자 판단을 기다린다.
